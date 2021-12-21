@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+ <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Abdurakhmon Rashidov">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css" integrity="sha512-IgmDkwzs96t4SrChW29No3NXBIBv8baW490zk5aXvhCD8vuZM3yUSkbyTBcXohkySecyzIrUwiF/qV0cuPcL3Q==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="/static/css/app.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    {% block title %}
+    <title>Polkadot - Login</title>
+    {% endblock %}
+</head>
+</head>
+<body>
+<section class="section">
+   <div class="container mt-5 box">
+       <div class="columns">
+           <div class="column is-full">
+               <div class="title">Login to get polkadots !</div>
+           </div>
+       </div>
+      <div class="columns">
+         <div class="column is-5">
+             <form action="" method="post">
+                 {% csrf_token %}
+                 <div class="field">
+                  <p class="control has-icons-left has-icons-right">
+                    {{form.username}}
+
+                    <span class="icon is-small is-left">
+                      <i class="fas fa-user"></i>
+                    </span>
+                    <span class="icon is-small is-right">
+                      <i class="fas fa-check"></i>
+                    </span>
+                  </p>
+                </div>
+                  <div class="field">
+                  <p class="control has-icons-left has-icons-right">
+
+                    {{form.first_name}}
+                    <span class="icon is-small is-left">
+                      <i class="fas fa-user"></i>
+                    </span>
+                    <span class="icon is-small is-right">
+                      <i class="fas fa-check"></i>
+                    </span>
+                  </p>
+                </div>
+                  <div class="field">
+                  <p class="control has-icons-left has-icons-right">
+                    {{form.email}}
+
+                    <span class="icon is-small is-left">
+                      <i class="fas fa-envelope"></i>
+                    </span>
+
+                  </p>
+                </div>
+                 <div class="field">
+                  <p class="control has-icons-left">
+                      {{form.password}}
+                    <span class="icon is-small is-left">
+                      <i class="fas fa-lock"></i>
+                    </span>
+                  </p>
+                </div>
+                   <div class="field">
+                  <p class="control has-icons-left">
+                      {{form.password2}}
+                    <span class="icon is-small is-left">
+                      <i class="fas fa-lock"></i>
+                    </span>
+                  </p>
+                </div>
+                <div class="field">
+                  <p class="control">
+                    <button class="button is-success">
+                      Login
+                    </button>
+                  </p>
+                </div>
+             </form>
+         </div>
+
+         <div class="column is-7">
+            <img src="/static/img/logo.png" alt="">
+         </div>
+      </div>
+   </div>
+</section>
+<script>
+    let username = document.getElementById("id_username");
+    let password = document.getElementById("id_password");
+    let password2 = document.getElementById("id_password2");
+    let email = document.getElementById("id_email");
+    let first_name = document.getElementById("id_first_name");
+    console.log(username)
+    username.className = "input"
+    password.className = "input"
+    password2.className = "input"
+    email.className = "input"
+    first_name.className = "input"
+</script>
+</body>
+</html>

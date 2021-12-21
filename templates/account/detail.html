@@ -1,0 +1,139 @@
+{% extends '../base.html' %}
+{% load static %}
+{% block content %}
+
+    <section class="section">
+        <div class="container">
+
+            <div class="columns">
+                <div class="column is-8">
+                    <div class="columns box mt-1">
+                        <div class="column is-3">
+                            <img src="img/up.png" alt="">
+                            <br>
+                            <hr>
+                            <span class="has-text-success is-size-2">
+                               +882
+                               <br>polkadots
+                            </span>
+                        </div>
+                        <div class="column is-10">
+                            <div class="title">
+                                {% if request.user.first_name %}
+                                    {{request.user.first_name}}
+                                {% else %}
+                                    Name is undefined
+                                {% endif %}
+                            </div>
+
+                            <div class="subtitle">
+                                 {% if request.user.profile.short_info %}
+                                    {{request.user.profile.short_info}}
+                                {% else %}
+                                    Info is undefined
+                                {% endif %}
+                            </div>
+                            <ul>
+                                <li class="is-size-4">
+                                    <i class="fas fa-calendar-alt"></i> On site at : 12/20/2021
+                                </li>
+                                <li class="is-size-4">
+                                    <i class="fas fa-users"></i> Followers : 566</li>
+                                <li class="is-size-4"><i class="fas fa-clipboard"></i> Posts : 66</li>
+                                <li class="is-size-4"><i class="fas fa-star"></i> Ranking : Expert-poncake</li>
+                            </ul>
+                            <a href="{% url 'accounts:edit' request.user.id %}" class="button is-info">
+                                <i class="fas fa-pencil"></i>
+                            </a>
+                        </div>
+
+                    </div>
+                    <nav class="pagination" role="navigation" aria-label="pagination">
+                        <a class="pagination-previous is-disabled" title="This is the first page">Previous</a>
+                        <a class="pagination-next">Next page</a>
+                        <ul class="pagination-list">
+                            <li>
+                                <a class="pagination-link is-current" aria-label="Page 1" aria-current="page">1</a>
+                            </li>
+                            <li>
+                                <a class="pagination-link" aria-label="Goto page 2">2</a>
+                            </li>
+                            <li>
+                                <a class="pagination-link" aria-label="Goto page 3">3</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="column is-4">
+                    <article class="panel is-success">
+                        <p class="panel-heading">
+                            Search polkadots
+                        </p>
+
+                        <div class="panel-block">
+                            <p class="control has-icons-left">
+                                <input class="input is-success" type="text" placeholder="Search">
+                                <span class="icon is-left">
+                              <i class="fas fa-search" aria-hidden="true"></i>
+                            </span>
+                            </p>
+                        </div>
+                        <a class="panel-block is-active">
+                            <span class="panel-icon">
+                            <i class="fas fa-book" aria-hidden="true"></i>
+                          </span> bulma
+                        </a>
+                        <a class="panel-block">
+                            <span class="panel-icon">
+                            <i class="fas fa-book" aria-hidden="true"></i>
+                          </span> marksheet
+                        </a>
+                        <a class="panel-block">
+                            <span class="panel-icon">
+                            <i class="fas fa-book" aria-hidden="true"></i>
+                          </span> minireset.css
+                        </a>
+                        <a class="panel-block">
+                            <span class="panel-icon">
+                            <i class="fas fa-book" aria-hidden="true"></i>
+                          </span> jgthms.github.io
+                        </a>
+                    </article>
+                    <br>
+                    <article class="panel is-info">
+                        <p class="panel-heading">
+                            TOP 5 users with polkadots
+                        </p>
+
+                        <a class="panel-block is-active">
+                            <span class="panel-icon">
+                            <i class="fas fa-user" aria-hidden="true"></i>
+                          </span> Master Joda
+                        </a>
+                        <a class="panel-block is-active">
+                            <span class="panel-icon">
+                            <i class="fas fa-user" aria-hidden="true"></i>
+                          </span> Luke Skywalker
+                        </a>
+                        <a class="panel-block is-active">
+                            <span class="panel-icon">
+                            <i class="fas fa-user" aria-hidden="true"></i>
+                          </span> Chui
+                        </a>
+                        <a class="panel-block is-active">
+                            <span class="panel-icon">
+                            <i class="fas fa-user" aria-hidden="true"></i>
+                          </span> R2D2
+                        </a>
+                        <a class="panel-block is-active">
+                            <span class="panel-icon">
+                            <i class="fas fa-user" aria-hidden="true"></i>
+                          </span> Khan Solo
+                        </a>
+
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
