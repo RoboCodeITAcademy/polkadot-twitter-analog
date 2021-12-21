@@ -23,3 +23,19 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 });
+
+// TAGS STYLE 
+let tags = document.querySelector("#banner_tags")
+let colorClasses = ["is-black", "is-dark", "is-primary", "is-link", "is-info", "is-success", "is-warning", "is-danger"]
+console.log(tags.childNodes)
+for (t in tags.childNodes) {
+    if (tags.childNodes[t].localName === "li") {
+        let li = tags.childNodes[t]
+        let color = Math.round(Math.random() * colorClasses.length)
+        console.log(color)
+        li.classList.add(`${colorClasses[color]}`)
+
+
+    }
+
+}
