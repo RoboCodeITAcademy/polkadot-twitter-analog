@@ -32,27 +32,23 @@ def profile(request):
 
 def edit(request,user_id):
     if request.method == "POST":
-        user_edit_form = UserEditForm(request.POST)
         profile_edit_form = ProfileEditForm(request.POST)
-        if user_edit_form.is_valid():
-            user_edit_form.save()
-            return redirect("/account/profile/")
         if profile_edit_form.is_valid():
             profile_edit_form.save()
             return redirect("/account/profile/")
     else:
-        user_edit_form = UserEditForm()
+
         profile_edit_form = ProfileEditForm()
 
     context = {
-        "user_form":user_edit_form,
-        "profile_form":profile_edit_form
+        "form":profile_edit_form
     }
     return render(request, "account/edit.html", context)
 
 class UpdateProfileView(UpdateView):
     model = Profile
-    fields = ["first_name","last_name","email","photo","short_info"]
+    fields = ["date_of_birth","photo","short_info", "user_icon"]
     template_name = 'account/edit.html'
-    slug_field = 'username'
-    slug_url_kwarg = 'slug'
+    success_url = "/account/profile"
+    # slug_field = 'username'
+    # slug_url_kwarg = 'slug'

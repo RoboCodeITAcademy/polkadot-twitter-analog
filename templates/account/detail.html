@@ -9,8 +9,9 @@
                 <div class="column is-full">
                     <div class="columns box mt-1">
                         <div class="column is-3">
-                            <img src="{{ request.user.profile.photo.url }}" style="border-radius:50%;">
-                            <br>
+                            <div class="image is-1by1">
+                            <img class="is-rounded" src="{{ request.user.profile.photo.url }}">
+                            </div><br>
                             <hr>
                             <span class="has-text-success is-size-2">
                                +{{user.likes}}
@@ -21,6 +22,7 @@
                             <div class="title">
                                 {% if request.user.first_name %}
                                     {{request.user.first_name}}
+                                    {{request.user.last_name}}
                                 {% else %}
                                     Name is undefined
                                 {% endif %}
@@ -34,17 +36,19 @@
                                 {% endif %}
                             </div>
                             <ul>
-                                <li class="is-size-4">
+                                <li class="is-size-4 mt-2">
+                                    <i class="fas fa-birthday-cake"></i> Date of birthday : {{user.date_of_birth|date:"d/m/Y"}}
+                                </li>
+                                <li class="is-size-4 mt-2">
                                     <i class="fas fa-calendar-alt"></i> On site : {{user.user.date_joined|date:"d/m/Y"}}
                                 </li>
-                                <li class="is-size-4">
+                                <li class="is-size-4 mt-2">
                                     <i class="fas fa-users"></i> Followers :  {{user.follower}}</li>
-                                <li class="is-size-4"><i class="fas fa-clipboard"></i> Posts :  {{user.post}}</li>
-                                <li class="is-size-4"><i class="fas fa-star"></i> Ranking :  {{user.rank}}</li>
-                                <li class="is-size-4"><i class="fas fa-star"></i> User icon :  <i class="has-text-info {{user.user_icon}}"></i></li>
+                                <li class="is-size-4 mt-2"><i class="fas fa-clipboard"></i> Posts :  {{user.post}}</li>
+                                <li class="is-size-4 mt-2"><i class="fas fa-star"></i> Ranking :  {{user.rank}}</li>
+                                <li class="is-size-4 mt-2"><i class="fas fa-info"></i> User icon :  <i class="has-text-info {{user.user_icon}}"></i></li>
                             </ul>
-<!--                            {% url 'accounts:edit' request.user.id %}-->
-                            <a href="{% url 'accounts:update' user.user.username %}" class="button is-info">
+                            <a href="{% url 'accounts:update' user.id %}" class="button is-info mt-4">
                                 <i class="fas fa-pencil"></i>
                             </a>
                         </div>
@@ -87,4 +91,7 @@
             </div>
         </div>
     </section>
+<br><br>
+<br><br>
+<br><br>
 {% endblock %}

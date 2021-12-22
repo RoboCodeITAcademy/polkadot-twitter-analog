@@ -31,4 +31,8 @@ class UserEditForm(forms.ModelForm):
 class ProfileEditForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ('date_of_birth', 'photo', "short_info")
+        fields = ('date_of_birth', 'photo', "short_info","user_icon")
+        widgets = {
+            "short_info":forms.Textarea(attrs={"cols": 3,"rows":3}),
+            "date_of_birth":forms.DateInput(format='%d/%m/%Y', attrs={"type": "date"})
+        }

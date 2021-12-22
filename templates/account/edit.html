@@ -24,21 +24,18 @@
 <div class="section">
    <div class="container">
       <div class="columns">
-         <div class="column is-6">
-            <div class="title">User edit form</div>
-            <form action="" method="post">
-               {{user_form|crispy}}
+         <div class="column is-full my-center">
+          <div class="box p-5">
+               <div class="title">Profile edit form for<br>
+                  <span class="has-text-info is-size-4">{{request.user.first_name}} {{request.user.last_name}}</span>
+               </div>
+            <form action="" method="post" enctype="multipart/form-data">
+               {{form|crispy}}
                {% csrf_token %}
+               <br>
                <input type="submit" class="button is-primary" value="Update">
             </form>
-         </div>
-         <div class="column is-6">
-            <div class="title">Profile edit form</div>
-              <form action="" method="post" enctype="multipart/form-data">
-                 {% csrf_token %}
-               {{profile_form|crispy}}
-                 <input type="submit" class="button is-primary" value="Update">
-            </form>
+          </div>
          </div>
       </div>
    </div>
@@ -47,11 +44,25 @@
 
 
 <script>
-    let username = document.getElementById("id_username");
-    let password = document.getElementById("id_password");
-    console.log(username)
-    username.className = "input"
-    password.className = "input"
+    let d = document.getElementById("id_date_of_birth");
+    let sh = document.getElementById("id_short_info");
+    let i = document.getElementById("id_user_icon");
+
+    d.className = "input"
+    sh.className = "textarea"
+    d.type = "date"
+    i.className = "input"
+
 </script>
+
+<footer class="footer has-background-success" style="position:fixed;width:100%;bottom:0;">
+  <div class="content has-text-centered">
+    <p>
+      <strong>Polkadots</strong> by <a href="https://jgthms.com">Abdurakhmon Rashidov</a>. The source code is licensed
+      <a href="https://github.com/RoboCodeITAcademy/polkadot-twitter-analog">github.com</a>. The website content
+      is licensed <a href="https://robocode.uz">Robocode IT Academy</a>.
+    </p>
+  </div>
+</footer>
 </body>
 </html>
