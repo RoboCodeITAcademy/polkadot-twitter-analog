@@ -9,12 +9,12 @@
                 <div class="column is-full">
                     <div class="columns box mt-1">
                         <div class="column is-3">
-                            <img src="img/up.png" alt="">
+                            <img src="{{ request.user.profile.photo.url }}" style="border-radius:50%;">
                             <br>
                             <hr>
                             <span class="has-text-success is-size-2">
-                               +882
-                               <br>polkadots
+                               +{{user.likes}}
+                                <i class="fas fa-thumbs-up"></i>
                             </span>
                         </div>
                         <div class="column is-5">
@@ -35,12 +35,13 @@
                             </div>
                             <ul>
                                 <li class="is-size-4">
-                                    <i class="fas fa-calendar-alt"></i> On site at : 12/20/2021
+                                    <i class="fas fa-calendar-alt"></i> On site : {{user.user.date_joined|date:"d/m/Y"}}
                                 </li>
                                 <li class="is-size-4">
-                                    <i class="fas fa-users"></i> Followers : 566</li>
-                                <li class="is-size-4"><i class="fas fa-clipboard"></i> Posts : 66</li>
-                                <li class="is-size-4"><i class="fas fa-star"></i> Ranking : Expert-poncake</li>
+                                    <i class="fas fa-users"></i> Followers :  {{user.follower}}</li>
+                                <li class="is-size-4"><i class="fas fa-clipboard"></i> Posts :  {{user.post}}</li>
+                                <li class="is-size-4"><i class="fas fa-star"></i> Ranking :  {{user.rank}}</li>
+                                <li class="is-size-4"><i class="fas fa-star"></i> User icon :  <i class="has-text-info {{user.user_icon}}"></i></li>
                             </ul>
                             <a href="{% url 'accounts:edit' request.user.id %}" class="button is-info">
                                 <i class="fas fa-pencil"></i>

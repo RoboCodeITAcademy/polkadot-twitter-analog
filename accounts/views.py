@@ -19,7 +19,14 @@ def register(request):
 
 @login_required(login_url="/account/login/")
 def profile(request):
-    return render(request, "account/detail.html")
+    u = request.user
+    user = Profile.objects.get(user=u)
+    if user:
+        return render(request, "account/detail.html", {"user": user})
+    else:
+        return render(request, "account/detail.html")
+
+
 
 def edit(request,user_id):
     if request.method == "POST":
