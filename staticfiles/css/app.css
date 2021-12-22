@@ -19,3 +19,7 @@ h4 {
 #banner_tags li a {
     color: aliceblue;
 }
+.my-center{
+display:flex;
+justify-content:center;
+}

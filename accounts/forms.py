@@ -8,7 +8,12 @@ class UserRegisterForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ('username', 'first_name', 'email')
+        fields = ('username', 'first_name','last_name', 'email')
+
+    def add_placeholder(self):
+        for field in self.fields:
+            field = self.fields.get(field)
+            field.widget.attrs.update({'placeholder': field.label})
 
 
     def clean_password2(self):

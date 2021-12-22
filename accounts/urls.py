@@ -10,4 +10,5 @@ urlpatterns = [
     path("register/", views.register, name='register'),
     path("profile/", views.profile, name='profile'),
     path("edit/<int:user_id>", views.edit, name='edit'),
+    path("update/<slug:slug>", views.UpdateProfileView.as_view(), name='update')
 ]

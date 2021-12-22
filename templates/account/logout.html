@@ -18,15 +18,34 @@
 <body>
 <section class="section">
     <div class="container">
-        <div class="is-centered">
-            <div class="title">
-                Log again <a href="{% url 'accounts:login' %}" class="button">
-                Login
-            </a>
+        <div class="columns">
+            <div class="column is-full">
+                <div class="box">
+                    <div class="title p-5">
+
+                        You are out of site,
+                        <span class="title"><i class="fas fa-user-astronaut has-text-info"></i></span> please come back soon
+                        <br>
+                        <br>
+                        <a href="{% url 'accounts:login' %}" class="button is-link">
+                            <i class="fas fa-arrow-left"></i>   Come Back !
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
+
+<footer class="footer has-background-success" style="position:fixed;width:100%;bottom:0;">
+  <div class="content has-text-centered">
+    <p>
+      <strong>Polkadots</strong> by <a href="https://jgthms.com">Abdurakhmon Rashidov</a>. The source code is licensed
+      <a href="https://github.com/RoboCodeITAcademy/polkadot-twitter-analog">github.com</a>. The website content
+      is licensed <a href="https://robocode.uz">Robocode IT Academy</a>.
+    </p>
+  </div>
+</footer>
 </body>
 </html>
