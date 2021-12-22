@@ -1,0 +1,98 @@
+{% load static %}
+{% load crispy_forms_tags %}
+
+<!doctype html>
+<html lang="en">
+<head>
+ <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Abdurakhmon Rashidov">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css" integrity="sha512-IgmDkwzs96t4SrChW29No3NXBIBv8baW490zk5aXvhCD8vuZM3yUSkbyTBcXohkySecyzIrUwiF/qV0cuPcL3Q==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="/static/css/app.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    {% block title %}
+    <title>Polkadot - Add</title>
+    {% endblock %}
+</head>
+</head>
+<body>
+
+<div class="section">
+   <div class="container">
+      <div class="columns">
+         <div class="column is-full my-center">
+          <div class="box p-5">
+               <div class="title">Polkadot add form for<br>
+                  <span class="has-text-info is-size-4">{{request.user.first_name}} {{request.user.last_name}}</span>
+               </div>
+            <form action="" method="post" enctype="multipart/form-data">
+                <div class="columns">
+                    <div class="column is-3">
+                        <div class="subtitle">
+                            Select category
+                        </div>
+                           <div class="select">
+                               {{form.category|safe}}
+                           </div>
+
+                        <div class="subtitle mt-5">
+                            Select tags
+                        </div>
+                           <div class="select is-multiple">
+                               {{form.tag|safe}}
+                           </div>
+                            <br>
+
+                           {% csrf_token %}
+                           <br>
+                    </div>
+                    <div class="column is-9">
+                        <div class="subtitle">
+                            Post body
+                        </div>
+                          <div class="field">
+                                {{form.body|safe}}
+                            </div>
+                        <br>
+                        <input type="submit" class="button is-link" value="Create">
+                    </div>
+                </div>
+
+
+            </form>
+          </div>
+         </div>
+      </div>
+   </div>
+</div>
+
+
+{% load static %}
+<script type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>
+<script type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
+<script>
+    let sh = document.getElementById("id_short_info");
+    let i = document.getElementById("id_user_icon");
+
+
+    sh.className = "textarea"
+    d.type = "date"
+    i.className = "input"
+
+</script>
+
+<footer class="footer has-background-success">
+  <div class="content has-text-centered">
+    <p>
+      <strong>Polkadots</strong> by <a href="https://jgthms.com">Abdurakhmon Rashidov</a>. The source code is licensed
+      <a href="https://github.com/RoboCodeITAcademy/polkadot-twitter-analog">github.com</a>. The website content
+      is licensed <a href="https://robocode.uz">Robocode IT Academy</a>.
+    </p>
+  </div>
+</footer>
+</body>
+</html>

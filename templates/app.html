@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-
+{% autoescape off %}
     <section class="section">
         <div class="container">
             <div class="columns">
@@ -103,19 +103,25 @@
             </div>
             <div class="columns">
                 <div class="column is-8">
-                    <div class="columns box mt-1">
+                        {% for post in posts %}
+                                 <div class="columns box mt-1">
                         <div class="column is-1">
                             <img src="img/up.png" width="40" alt="">
                             <span class="has-text-success is-size-2">
-                                62
+                                {{post.up}}
                             </span>
                         </div>
                         <div class="column is-10">
                             <div class="subtitle">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui, deserunt. Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui, deserunt.
+                                {{post.body}}
                             </div>
                             <p class="is-right">
-                                Posted by <span class="tag"><a href="#" >Master Joda</a></span>
+                                Posted by <span class="tag is-link "><a href="#" class="has-text-white">{{post.author}}</a></span>
+                                Tags
+                                {% for tag in post.tags.all %}
+                                <span class="tag"><a href="#" >{{tag.name}}</a></span>
+                                {% endfor %}
+
                             </p>
                         </div>
                         <div class="column is-1">
@@ -127,6 +133,7 @@
                             </div>
                         </div>
                     </div>
+                        {% endfor %}
                     <nav class="pagination" role="navigation" aria-label="pagination">
                         <a class="pagination-previous is-disabled" title="This is the first page">Previous</a>
                         <a class="pagination-next">Next page</a>
@@ -215,4 +222,5 @@
             </div>
         </div>
     </section>
+{% endautoescape %}
 {% endblock %}

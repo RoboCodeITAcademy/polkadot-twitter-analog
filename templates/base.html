@@ -73,8 +73,16 @@
                 <div class="navbar-item">
                     <div class="field is-grouped">
                         {% if request.user.is_authenticated %}
+                         <p class="control">
+                            <a class="button is-info" href="{% url 'accounts:profile' %}">
+                                <span class="icon">
+                                  <i class="fas fa-user"></i>
+                                </span>
+                                <span>Profile</span>
+                            </a>
+                        </p>
                         <p class="control">
-                            <a class="button is-primary" href="{% url 'accounts:logout' %}">
+                            <a class="button is-danger" href="{% url 'accounts:logout' %}">
                                 <span class="icon">
                                   <i class="fas fa-sign-out"></i>
                                 </span>
@@ -83,12 +91,22 @@
                         </p>
                         {% else %}
                         <p class="control">
-                            <a class="bd-tw-button button" href="{% url 'accounts:login' %}">
+                            <a class="bd-tw-button button is-info" href="{% url 'accounts:login' %}">
                                 <span class="icon">
                                 <i class="fas fa-sign-in"></i>
                                 </span>
                                 <span>
                                     Login
+                                </span>
+                            </a>
+                        </p>
+                           <p class="control">
+                            <a class="bd-tw-button button is-link" href="{% url 'accounts:register' %}">
+                                <span class="icon">
+                                <i class="fas fa-sign-in"></i>
+                                </span>
+                                <span>
+                                    Register
                                 </span>
                             </a>
                         </p>

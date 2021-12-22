@@ -39,7 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'main',
     'accounts',
-    'crispy_forms'
+    'crispy_forms',
+    'ckeditor_uploader',
+    'ckeditor',
 ]
 CRISPY_TEMPLATE_PACK = "bootstrap4"
 MIDDLEWARE = [
@@ -118,6 +120,29 @@ USE_L10N = True
 
 USE_TZ = True
 
+# CKEDITOR_CONFIGS = {
+#     'default': {
+#         'skin': 'moono',
+#         'toolbar': 'full',
+#         'height': 300,
+#         'width': "100%",
+#     },
+# }
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'Custom',
+        'skin': 'moono',
+        'height': 300,
+        'width': "100%",
+        'toolbar_Custom': [
+            ['Bold', 'Italic', 'Underline'],
+            ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
+            ['Link', 'Unlink'],
+            ['RemoveFormat', 'Source']
+        ]
+    }
+}
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
@@ -127,7 +152,8 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
+CKEDITOR_UPLOAD_PATH = "uploads/"
+CKEDITOR_BASEPATH = "/static/ckeditor/ckeditor/"
 STATICFILES_DIRS = (
   os.path.join(BASE_DIR, 'staticfiles')) ,
 

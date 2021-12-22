@@ -10,7 +10,7 @@
                     <div class="columns box mt-1">
                         <div class="column is-3">
                             <div class="image is-1by1">
-                            <img class="is-rounded" src="{{ request.user.profile.photo.url }}">
+                            <img class="is-rounded" src="{{ user.photo.url }}">
                             </div><br>
                             <hr>
                             <span class="has-text-success is-size-2">
@@ -43,16 +43,35 @@
                                     <i class="fas fa-calendar-alt"></i> On site : {{user.user.date_joined|date:"d/m/Y"}}
                                 </li>
                                 <li class="is-size-4 mt-2">
-                                    <i class="fas fa-users"></i> Followers :  {{user.follower}}</li>
+                                    <i class="fas fa-thumbs-up"></i> Likes :  {{user.follower}}</li>
                                 <li class="is-size-4 mt-2"><i class="fas fa-clipboard"></i> Posts :  {{user.post}}</li>
                                 <li class="is-size-4 mt-2"><i class="fas fa-star"></i> Ranking :  {{user.rank}}</li>
                                 <li class="is-size-4 mt-2"><i class="fas fa-info"></i> User icon :  <i class="has-text-info {{user.user_icon}}"></i></li>
                             </ul>
                             <a href="{% url 'accounts:update' user.id %}" class="button is-info mt-4">
-                                <i class="fas fa-pencil"></i>
+                                Edit profile
                             </a>
                         </div>
                         <div class="column is-4">
+                            <div class="is-center">
+                                <div class="title">
+                                    <table class="table">
+                                        <tr>
+                                            <td width="80%">
+                                              My Posts
+                                            </td>
+                                            <td width="10%"></td>
+                                            <td>
+                                                 <a href="{% url 'main:add' %}" class="button is-link is-right" title="Add New Post">
+                                                    Add new post
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </table>
+
+                                </div>
+
+                            </div>
                             <div class="table-container">
                               <table class="table is-hoverable is-fullwidth">
                                   <thead>
