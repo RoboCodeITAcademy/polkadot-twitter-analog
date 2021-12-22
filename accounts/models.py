@@ -10,6 +10,8 @@ class Profile(models.Model):
     post = models.PositiveIntegerField(default=0)
     rank = models.CharField(max_length=200, blank=True)
     short_info = models.CharField(max_length=200, blank=True)
+    likes = models.PositiveIntegerField("Polkadots count", default=0)
+    user_icon = models.CharField("Fontawesome User icon name", max_length=50, blank=True)
 
 
     def __str__(self):
