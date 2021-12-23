@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.http import HttpResponseRedirect
 from django.views.generic.edit import CreateView
 
 from .models import Post
@@ -12,3 +13,10 @@ class AddPostView(CreateView):
     fields = ('category', 'tag','body')
     template_name = "polkadots/add.html"
     success_url = "/"
+    
+    
+    def form_valid(self, form):
+        obj = form.save(commit=False)
+        obj.author= self.request.user
+        obj.save()        
+        return HttpResponseRedirect(self.success_url)

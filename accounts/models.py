@@ -12,6 +12,11 @@ class Profile(models.Model):
     short_info = models.CharField(max_length=200, blank=True)
     likes = models.PositiveIntegerField("Polkadots count", default=0)
     user_icon = models.CharField("Fontawesome User icon name", max_length=50, blank=True)
+    
+    def image_url(self):
+        if self.photo:
+            return getattr(self.photo, 'url', "/static/img/nouser.png")
+        return None
 
 
     def __str__(self):
