@@ -6,5 +6,10 @@ app_name = "main"
 urlpatterns = [
     path("", views.index, name="home"),
     path("add/", views.AddPostView.as_view(), name="add"),
+    path("category/<str:category_slug>/", views.category_list, name="category_list"),
+    path("tag/<str:tag_slug>/", views.tag_list, name="tag_list"),
+    
+    path("like/", views.like, name="like"),
+    path("search/", views.inline_search, name="search"),
 
 ]

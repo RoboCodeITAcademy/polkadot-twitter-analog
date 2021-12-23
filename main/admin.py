@@ -17,3 +17,5 @@ class TagAdmin(admin.ModelAdmin):
 class PostAdmin(admin.ModelAdmin):
 	list_display = ['category','author','up', 'down', 'active']
 	list_filter = ['up', 'author',"published"]
+ 
+admin.site.register(Like)

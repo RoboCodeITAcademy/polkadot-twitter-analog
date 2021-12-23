@@ -27,15 +27,65 @@ document.addEventListener('DOMContentLoaded', () => {
 // TAGS STYLE 
 let tags = document.querySelector("#banner_tags")
 let colorClasses = ["is-black", "is-dark", "is-primary", "is-link", "is-info", "is-success", "is-warning", "is-danger"]
-console.log(tags.childNodes)
+
 for (t in tags.childNodes) {
     if (tags.childNodes[t].localName === "li") {
         let li = tags.childNodes[t]
         let color = Math.round(Math.random() * colorClasses.length)
-        console.log(color)
+
         li.classList.add(`${colorClasses[color]}`)
 
 
     }
 
+}
+
+function AddLike(postId) {
+
+    let d = {
+        post_id: postId,
+    }
+    let data = JSON.stringify(d)
+    if (window.XMLHttpRequest) {
+        var xhttp = new XMLHttpRequest();
+    } else { // code for IE6, IE5
+        var xhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xhttp.onreadystatechange = function() {
+        if (xhttp.readyState === 4 && xhttp.status === 200) {
+            var data = JSON.parse(this.responseText);
+            if (data["status" === 404]) {
+                let up = document.getElementById("up")
+                up.setAttribute("disabled")
+            }
+        } else {
+
+        }
+    }
+    var url = "/like/"
+    xhttp.open("GET", url + `?data=${data}`, true);
+    xhttp.send();
+}
+
+// search
+
+function InlineSearch(query) {
+    console.log(query)
+    let data = JSON.stringify(query)
+    if (window.XMLHttpRequest) {
+        var xhttp = new XMLHttpRequest();
+    } else { // code for IE6, IE5
+        var xhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xhttp.onreadystatechange = function() {
+        if (xhttp.readyState === 4 && xhttp.status === 200) {
+            var data = JSON.parse(this.responseText);
+            console.log(data)
+        } else {
+
+        }
+    }
+    var url = "/search/"
+    xhttp.open("GET", url + `?data=${data}`, true);
+    xhttp.send();
 }
