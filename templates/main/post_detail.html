@@ -1,0 +1,111 @@
+{% extends "base.html" %} {% block content %} {% autoescape off %}
+
+
+<section class="section" id="polka">
+    <div class="container">
+        <div class="columns">
+            <div class="column is-full box">
+                <nav class="breadcrumb p-2" aria-label="breadcrumbs">
+                    <ul>
+                        {% for cat in categories %}
+                        <li>
+                            <a href="{{cat.get_url}}">
+                                <span class="icon is-small">
+                                <i class="{{cat.icon}}" aria-hidden="true"></i>
+                              </span>
+                                <span>{{cat.title}}</span>
+                            </a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <div class="columns">
+            <div class="column is-8">
+
+                <div class="columns box mt-1">
+
+                    <div class="column is-10">
+                      <div class="content">
+                        <a href="{% url 'main:detail' post.id %}">
+                        <div class="subtitle">{{post.title}}</div>
+                        </a>
+                          {{post.body}}
+                      </div>
+                      <p class="is-right">
+                          Posted by <span class="tag is-link "><a href="#" class="has-text-white">{{post.author}}</a></span> Tags {% for tag in post.tags.all %}
+                          <span class="tag"><a href="#" >{{tag.name}}</a></span> {% endfor %}
+
+                          <span class="icon-text">
+                            <span class="icon has-text-info">
+                              <i class="fas fa-thumbs-up"></i>
+                            </span>
+                            <span id="ups">{{post.up}}</span>
+                          </span>
+
+                          <span class="icon-text">
+                            <span class="icon has-text-info">
+                              <i class="fas fa-thumbs-down"></i>
+                            </span>
+                            <span id="downs">{{post.down}}</span>
+                          </span>
+
+                      </p>
+                    </div>
+                    <div class="column is-2">
+                        {% if post not in request.user.profile.likes.all %}
+                        <a id="down" class="button mt-1 is-info"
+                        onclick="PostUpDownQuery({{object.id}},'up')">
+                            <i class="fas fa-thumbs-up  is-size-5"></i>
+                        </a>
+                        <a id="up" class="button is-danger mt-1"
+                        onclick="PostUpDownQuery({{object.id}},'down')">
+                            <i class="fas fa-thumbs-down  is-size-5"></i>
+                        </a>
+                        {% else %}
+                        <p>Like bosilgan</p>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <nav class="pagination" role="navigation" aria-label="pagination">
+                    <a class="pagination-previous is-disabled" title="This is the first page">Previous</a>
+                    <a class="pagination-next">Next page</a>
+                    <ul class="pagination-list">
+                        <li>
+                            <a class="pagination-link is-current" aria-label="Page 1" aria-current="page">1</a>
+                        </li>
+                        <li>
+                            <a class="pagination-link" aria-label="Goto page 2">2</a>
+                        </li>
+                        <li>
+                            <a class="pagination-link" aria-label="Goto page 3">3</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="column is-4">
+                <article class="panel is-success">
+                    <p class="panel-heading">
+                        Search polkadots
+                    </p>
+
+                    <form class="panel-block" id="searchForm" action="#" method="get" onkeydown="InlineSearch(this[0].value)">
+                        <p class="control has-icons-left">
+                            <input class="input is-success" type="text" placeholder="Ha , qidiramiz.">
+                            <span class="icon is-left">
+                              <i class="fas fa-search" aria-hidden="true"></i>
+                            </span>
+                        </p>
+                    </form>
+                    <span id="result_list"></span>
+
+                </article>
+                <br>
+
+            </div>
+        </div>
+    </div>
+</section>
+{% endautoescape %} {% endblock %}

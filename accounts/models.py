@@ -1,5 +1,6 @@
 from django.db import models
 from django.conf import settings
+from main.models import Post
 # from main.models import Post
 # Create your models here.
 
@@ -11,10 +12,10 @@ class Profile(models.Model):
     post = models.PositiveIntegerField(default=0)
     rank = models.CharField(max_length=200, blank=True)
     short_info = models.CharField(max_length=200, blank=True)
-    likes = models.PositiveIntegerField("Polkadots count", default=0)
+    likes = models.ManyToManyField(Post, related_name='post_likes')
     user_icon = models.CharField("Fontawesome User icon name", max_length=50, blank=True)
     # liked_post = models.ForeignKey(Post,on_delete=models.CASCADE, related_name = "liked_posts")
-    
+
     def image_url(self):
         if self.photo:
             return getattr(self.photo, 'url', "/static/img/nouser.png")
